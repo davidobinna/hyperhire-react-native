@@ -31,7 +31,6 @@ export default function HomeScreen() {
                 Continue with Email
               </Text>
               <Ionicons name="chevron-forward-circle-outline" style={styles.icon5} size={24} color="black" />
-                
             </View>
           </TouchableOpacity>
         </View>
@@ -45,7 +44,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#fff"
+       backgroundColor: "rgba(23,22,22,1)"
     },
     group: {
       width: '100%',
@@ -65,6 +64,8 @@ const styles = StyleSheet.create({
       marginTop: 100,
       marginLeft: 15
     },
+ 
+    
     group2: {
       width: 310,
       height: 69,
@@ -73,33 +74,39 @@ const styles = StyleSheet.create({
       marginLeft: 0
     },
     button: {
-      width: 310,
-      height: 69,
+      width: 346,
+      height: 58,
       backgroundColor: "rgba(17,98,242,1)",
       borderRadius: 31,
-      flexDirection: "row"
+      flexDirection: "row",
+      alignSelf: "center",
+      alignItems: "center",
+      justifyContent: "space-between", // Ensure the children are spaced correctly
+      paddingHorizontal: 15,
     },
     icon: {
       color: "rgba(240,222,222,1)",
-      fontSize: 32,
+      fontSize: 25,
       height: 32,
       width: 32,
-      marginLeft: -1,
-      marginTop: 4
+      marginTop: 0
     },
     signUpForFree: {
       fontFamily: "roboto-regular",
       color: "rgba(255,255,255,1)",
-      fontSize: 24,
-      marginLeft: 9,
-      marginTop: 8
+      fontSize: 20,
+      marginLeft: 10,
+      marginTop: 0
     },
     icon4: {
       color: "rgba(255,255,255,1)",
-      fontSize: 40,
-      height: 44,
-      width: 40,
-      marginLeft: 28
+      fontSize: 41,
+      height: 45,
+      width: 41,
+      position: "absolute",
+      right: -30,
+      top: '42%',
+      transform: [{ translateY: -22.5 }] // Center vertically
     },
     iconRow: {
       height: 44,
@@ -112,20 +119,24 @@ const styles = StyleSheet.create({
     group3: {
       width: 310,
       height: 69,
-      marginTop: 17,
+      justifyContent: "center",
+      marginTop: 1,
       alignSelf: 'center',
-      marginLeft: 0
     },
     button2: {
-      width: 310,
-      height: 69,
-      backgroundColor: "rgba(108,103,103,1)",
+      width: 352,
+      height: 54,
+      backgroundColor: "rgba(6,15,26,1)",
       borderRadius: 31,
-      flexDirection: "row"
+      flexDirection: "row",
+      alignSelf: "center",
+      alignItems: "center",
+      justifyContent: "space-between", // Ensure the children are spaced correctly
+      paddingHorizontal: 15,
     },
     icon2: {
       color: "rgba(255,255,255,1)",
-      fontSize: 29,
+      fontSize: 20,
       height: 29,
       width: 29,
       marginTop: 3
@@ -133,16 +144,19 @@ const styles = StyleSheet.create({
     continueWithEmail: {
       fontFamily: "roboto-regular",
       color: "rgba(255,255,255,1)",
-      fontSize: 18,
+      fontSize: 20,
       marginLeft: 11,
-      marginTop: 11
+      marginTop: 0
     },
     icon5: {
       color: "rgba(255,255,255,1)",
-      fontSize: 40,
-      height: 44,
-      width: 40,
-      marginLeft: 39
+      fontSize: 41,
+      height: 45,
+      width: 41,
+      position: "absolute",
+      right: -30,
+      top: '42%',
+      transform: [{ translateY: -22.5 }] // Center vertically
     },
     icon2Row: {
       height: 44,
