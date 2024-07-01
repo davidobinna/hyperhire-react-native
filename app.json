@@ -21,9 +21,10 @@
         "backgroundColor": "#ffffff"
       }
     },
+    "platforms": ["ios", "android", "web"],
     "web": {
       "bundler": "metro",
-      "output": "server",
+      "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
