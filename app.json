@@ -21,7 +21,6 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "platforms": ["ios", "android", "web"],
     "web": {
       "bundler": "metro",
       "output": "static",

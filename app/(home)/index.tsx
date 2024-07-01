@@ -2,8 +2,14 @@ import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity } from
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 export default function HomeScreen() {
+
+const signup = () => {
+  router.push('register');
+}
+
   return (
     <View style={styles.container}>
     <View style={styles.group}>
@@ -15,7 +21,7 @@ export default function HomeScreen() {
       >
         <Text style={styles.sooAndCarrots}>Soo {"\n"}and Carrots</Text>
         <View style={styles.group2}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={signup}>
             <View style={styles.iconRow}>
               <SimpleLineIcons name="login" style={styles.icon} size={24} color="black" />
               <Text style={styles.signUpForFree}>Sign Up for Free</Text>
