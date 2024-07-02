@@ -11,6 +11,14 @@ const [formData, setFormData] = useState({
     lastName: ''
 })
 
+const [errorMessages, SetErrorMessages] = useState({
+  userName: '',
+  password: '',
+  confirmPassword: '',
+  firstName: '',
+  lastName: ''
+})
+
 const handleInputChange = (key: string, value: string) => {
    setFormData({
     ...formData, 
@@ -18,9 +26,37 @@ const handleInputChange = (key: string, value: string) => {
    });
 };
 
+type ErrorProp = {
+  newError: {};
+}
+
 const handleSubmit = () => {
-    // Handle form submission
-    console.log(formData);
+    const newErrors: Error = {};
+    if (!formData.userName.trim()) {
+       newErrors.userName = 'You must Pick a competition name to register'
+    }
+    
+    if (!formData.password.trim()) {
+      newErrors.password = 'You must Pick a competition name to register'
+   }
+
+   if (!formData.confirmPassword.trim()) {
+    newErrors.confirmPassword = 'You must Pick a competition name to register'
+ }
+
+ if (!formData.firstName.trim()) {
+  newErrors.firstName = 'You must Pick a competition name to register'
+}
+if (!formData.lastName.trim()) {
+  newErrors.lastName = 'You must Pick a competition name to register'
+}
+    
+if (!Object.keys(newErrors).length) {
+   SetErrorMessages(newErrors);
+   return
+  }
+
+  console.log(formData)
 };
 
   return (
@@ -34,6 +70,7 @@ const handleSubmit = () => {
             buttonText="Sign Up"
             onButtonPress={handleSubmit}
             onChangeText={handleInputChange}
+            errorMessages={errorMessages}
           />
     </View>
   );

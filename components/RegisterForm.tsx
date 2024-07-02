@@ -12,7 +12,15 @@ type FormProps = {
     buttonText: string;
     onButtonPress: () => void;
     onChangeText: (key: string, value: string) => void;
-}
+    errorMessages: {
+      userName?: String;
+      password?: String;
+      confirmPassword?: String;
+      firstName?: string;
+      lastName?: string;
+     }
+
+  }
 
 const RegisterForm: React.FC<FormProps> = (props) => {
 const {
@@ -23,74 +31,90 @@ const {
        lastName,
        buttonText,
        onButtonPress, 
-       onChangeText
+       onChangeText,
+       errorMessages
     } = props ;
 
+
     return (
-        <View style={styles.container}>
-        <View style={styles.group}>
-            <View style={styles.iconRow}>
-                <TouchableOpacity onPress={() => {router.back()}}>
-                <AntDesign name="leftcircleo" size={24} color="black" style={styles.icon}/>
-                </TouchableOpacity>
-                <Text style={styles.createAccount}>Create Account</Text>
-            </View>
-            <TextInput
-                placeholder="User Name"
-                textBreakStrategy="simple"
-                placeholderTextColor="rgba(183,169,169,1)"
-                keyboardAppearance="default"
-                style={styles.placeholder}
-                value={userName}
-                onChangeText={(text) => onChangeText('userName', text)}
-            />
-            <TextInput
-                placeholder="Password"
-                textBreakStrategy="simple"
-                placeholderTextColor="rgba(183,169,169,1)"
-                keyboardAppearance="default"
-                secureTextEntry
-                style={styles.textInput}
-                value={password}
-                onChangeText={(text) => onChangeText('password', text)}
-            />
-            <TextInput
-                placeholder="retype password"
-                textBreakStrategy="simple"
-                placeholderTextColor="rgba(183,169,169,1)"
-                keyboardAppearance="default"
-                secureTextEntry
-                style={styles.textInput2}
-                value={confirmPassword}
-                onChangeText={(text) => onChangeText('confirmPassword', text)}
-            />
-            <TextInput
-                placeholder="First Name"
-                textBreakStrategy="simple"
-                placeholderTextColor="rgba(183,169,169,1)"
-                keyboardAppearance="default"
-                style={styles.textInput3}
-                value={firstName}
-                onChangeText={(text) => onChangeText('firstName', text)}
-            />
-            <TextInput
-                placeholder="Last Name"
-                textBreakStrategy="simple"
-                placeholderTextColor="rgba(183,169,169,1)"
-                keyboardAppearance="default"
-                style={styles.textInput4}
-                value={lastName}
-                onChangeText={(text) => onChangeText('lastName', text)}
-            />
-                <Text style={styles.he}>
-                By signing up, i agree to Clot&#39;s terms &amp;{"\n"}condition and
-                Privacy&amp; policy
-                </Text>
-            <TouchableOpacity style={styles.button} onPress={onButtonPress}>
-                <Text style={styles.signUp}>{buttonText}</Text>
-            </TouchableOpacity>
-        </View>
-    </View>
+      <View style={styles.container}>
+      <View style={styles.group}>
+          <View style={styles.iconRow}>
+              <TouchableOpacity onPress={() => { router.back() }}>
+                  <AntDesign name="leftcircleo" size={24} color="black" style={styles.icon}/>
+              </TouchableOpacity>
+              <Text style={styles.createAccount}>Create Account</Text>
+          </View>
+          <View style={styles.inputGroup}>
+                    {errorMessages?.userName && <Text style={styles.errorMessage}>{errorMessages?.userName}</Text>}
+                    <TextInput
+                        placeholder="User Name"
+                        textBreakStrategy="simple"
+                        placeholderTextColor="rgba(183,169,169,1)"
+                        keyboardAppearance="default"
+                        style={styles.textInput}
+                        value={userName}
+                        onChangeText={(text) => onChangeText('userName', text)}
+                    />
+                </View>
+                <View style={styles.inputGroup}>
+                    {errorMessages?.password && <Text style={styles.errorMessage}>{errorMessages?.password}</Text>}
+                    <TextInput
+                        placeholder="Password"
+                        textBreakStrategy="simple"
+                        placeholderTextColor="rgba(183,169,169,1)"
+                        keyboardAppearance="default"
+                        secureTextEntry
+                        style={styles.textInput}
+                        value={password}
+                        onChangeText={(text) => onChangeText('password', text)}
+                    />
+                </View>
+                <View style={styles.inputGroup}>
+                    {errorMessages?.confirmPassword && <Text style={styles.errorMessage}>{errorMessages?.confirmPassword}</Text>}
+                    <TextInput
+                        placeholder="Retype Password"
+                        textBreakStrategy="simple"
+                        placeholderTextColor="rgba(183,169,169,1)"
+                        keyboardAppearance="default"
+                        secureTextEntry
+                        style={styles.textInput}
+                        value={confirmPassword}
+                        onChangeText={(text) => onChangeText('confirmPassword', text)}
+                    />
+                </View>
+                <View style={styles.inputGroup}>
+                    {errorMessages?.firstName && <Text style={styles.errorMessage}>{errorMessages?.firstName}</Text>}
+                    <TextInput
+                        placeholder="First Name"
+                        textBreakStrategy="simple"
+                        placeholderTextColor="rgba(183,169,169,1)"
+                        keyboardAppearance="default"
+                        style={styles.textInput}
+                        value={firstName}
+                        onChangeText={(text) => onChangeText('firstName', text)}
+                    />
+                </View>
+                <View style={styles.inputGroup}>
+                    {errorMessages?.lastName && <Text style={styles.errorMessage}>{errorMessages?.lastName}</Text>}
+                    <TextInput
+                        placeholder="Last Name"
+                        textBreakStrategy="simple"
+                        placeholderTextColor="rgba(183,169,169,1)"
+                        keyboardAppearance="default"
+                        style={styles.textInput}
+                        value={lastName}
+                        onChangeText={(text) => onChangeText('lastName', text)}
+                    />
+                </View>
+          <Text style={styles.he}>
+              By signing up, I agree to Clot's terms & conditions and Privacy & policy
+          </Text>
+          <TouchableOpacity style={styles.button} onPress={onButtonPress}>
+              <Text style={styles.signUp}>{buttonText}</Text>
+          </TouchableOpacity>
+      </View>
+  </View>
     )
 }
 
@@ -135,50 +159,29 @@ const styles = StyleSheet.create({
       marginTop: 76,
       marginLeft: 20
     },
+    inputGroup: {
+      marginTop: 5,
+      marginLeft: 10,
+      width: '100%',
+  },
+  errorMessage: {
+      fontFamily: "roboto-regular",
+      color: "rgba(215,60,60,1)",
+      marginBottom: 1,
+      marginTop: 10,
+      marginLeft: 16,
+      position: 'absolute',
+  },
     textInput: {
       fontFamily: "roboto-regular",
-      color: "rgba(237,233,233,1)",
+      color: "#000",
       height: 48,
       width: 301,
       backgroundColor: "rgba(249,239,239,0.58)",
       borderRadius: 19,
-      textAlign: "justify",
+      paddingHorizontal: 10,
       opacity: 0.9,
       marginTop: 37,
-      marginLeft: 20
-    },
-    textInput2: {
-      fontFamily: "roboto-regular",
-      color: "rgba(237,233,233,1)",
-      height: 48,
-      width: 301,
-      backgroundColor: "rgba(249,239,239,0.58)",
-      borderRadius: 16,
-      textAlign: "justify",
-      opacity: 0.9,
-      marginTop: 41,
-      marginLeft: 20
-    },
-    textInput3: {
-      fontFamily: "roboto-regular",
-      color: "rgba(237,233,233,1)",
-      height: 48,
-      width: 301,
-      backgroundColor: "rgba(249,239,239,0.58)",
-      textAlign: "justify",
-      opacity: 0.9,
-      marginTop: 56,
-      marginLeft: 17
-    },
-    textInput4: {
-      fontFamily: "roboto-regular",
-      color: "rgba(237,233,233,1)",
-      height: 48,
-      width: 301,
-      backgroundColor: "rgba(249,239,239,0.58)",
-      textAlign: "justify",
-      opacity: 0.9,
-      marginTop: 31,
       marginLeft: 20
     },
     
