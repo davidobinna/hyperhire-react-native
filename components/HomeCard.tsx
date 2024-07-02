@@ -1,6 +1,7 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native"
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
+import { router } from "expo-router";
 
 
 const createArrayRange = (key: number) => {
@@ -16,7 +17,9 @@ const rangeArray = createArrayRange(15);
         <View style={styles.group1}>
           <View style={styles.group2}>
             <View style={styles.iconRow}>
+                <TouchableOpacity onPress={() => {router.back()}}>
               <AntDesign name="arrowleft" style={styles.icon} color="black" />
+              </TouchableOpacity>
               <Text style={styles.asian}>Asian</Text>
               <EvilIcons name="search" size={24} style={styles.icon2} color="black" />
             </View>
