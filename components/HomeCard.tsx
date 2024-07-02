@@ -109,18 +109,17 @@ const styles = StyleSheet.create({
     group4: {
       width: 325,
       height: 559,
-      marginTop: 3,
+      marginTop: 5,
       marginLeft: -2
     },
     scrollArea: {
       width: 325,
       height: 650,
-      backgroundColor: "rgba(255,255,255,1)",
-      marginTop: 13
+      backgroundColor: "transparent",
+      marginTop: 15
     },
     scrollArea_contentContainerStyle: {
-      height: 546,
-      width: 325
+      paddingVertical: 1,
     },
     rect: {
       width: 323,
