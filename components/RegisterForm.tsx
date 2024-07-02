@@ -6,6 +6,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-nativ
 type FormProps = {
     userName: string;
     password: string;
+    email: string;
     confirmPassword: string;
     firstName: string;
     lastName: string;
@@ -14,6 +15,7 @@ type FormProps = {
     onChangeText: (key: string, value: string) => void;
     errorMessages: {
       userName?: String;
+      email?: string;
       password?: String;
       confirmPassword?: String;
       firstName?: string;
@@ -25,6 +27,7 @@ type FormProps = {
 const RegisterForm: React.FC<FormProps> = (props) => {
 const {
        userName,
+       email,
        password,
        confirmPassword,
        firstName,
@@ -55,6 +58,18 @@ const {
                         style={styles.textInput}
                         value={userName}
                         onChangeText={(text) => onChangeText('userName', text)}
+                    />
+                </View>
+                <View style={styles.inputGroup}>
+                    {errorMessages?.email && <Text style={styles.errorMessage}>{errorMessages?.email}</Text>}
+                    <TextInput
+                        placeholder="User Name"
+                        textBreakStrategy="simple"
+                        placeholderTextColor="rgba(183,169,169,1)"
+                        keyboardAppearance="default"
+                        style={styles.textInput}
+                        value={email}
+                        onChangeText={(text) => onChangeText('email', text)}
                     />
                 </View>
                 <View style={styles.inputGroup}>

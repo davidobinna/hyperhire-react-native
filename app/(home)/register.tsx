@@ -1,18 +1,21 @@
 import RegisterForm from '@/components/RegisterForm';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { View, Text } from 'react-native';
 
 export default function Register() {
 const [formData, setFormData] = useState({
     userName: '',
+    email: '',
     password: '',
     confirmPassword: '',
     firstName: '',
     lastName: ''
 })
 
-const [errorMessages, SetErrorMessages] = useState({
+const [errorMessages, SetErrorMessages] = useState< {[key: string]: string} >({
   userName: '',
+  email: '',
   password: '',
   confirmPassword: '',
   firstName: '',
@@ -26,43 +29,46 @@ const handleInputChange = (key: string, value: string) => {
    });
 };
 
-type ErrorProp = {
-  newError: {};
-}
 
 const handleSubmit = () => {
-    const newErrors: Error = {};
+    const newErrors: {[key: string]: string} = {};
     if (!formData.userName.trim()) {
        newErrors.userName = 'You must Pick a competition name to register'
     }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Please Input email address'
+   }
     
     if (!formData.password.trim()) {
-      newErrors.password = 'You must Pick a competition name to register'
+      newErrors.password = 'At least 8 letters, includinding 3 upercase letters. number or special letters'
    }
 
    if (!formData.confirmPassword.trim()) {
-    newErrors.confirmPassword = 'You must Pick a competition name to register'
+    newErrors.confirmPassword = 'Please confirm password, and password must match'
  }
 
  if (!formData.firstName.trim()) {
-  newErrors.firstName = 'You must Pick a competition name to register'
+  newErrors.firstName = 'First Name is required'
 }
 if (!formData.lastName.trim()) {
-  newErrors.lastName = 'You must Pick a competition name to register'
+  newErrors.lastName = 'Last name is required'
 }
     
-if (!Object.keys(newErrors).length) {
+if (Object.keys(newErrors).length > 0) {
    SetErrorMessages(newErrors);
    return
   }
 
   console.log(formData)
+  router.push('/homepage')
 };
 
   return (
     <View>
           <RegisterForm
             userName={formData.userName}
+            email={formData.email}
             password={formData.password}
             confirmPassword={formData.confirmPassword}
             firstName={formData.firstName}
