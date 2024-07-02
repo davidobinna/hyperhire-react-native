@@ -15,6 +15,13 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ```bash
     npx expo start
    ```
+3. download expo app and scan the QR code 
+
+![Oneplus1](https://github.com/davidobinna/hyperhire-react-native/assets/69047727/21640caf-de4a-4fbd-824f-a2b31a491c82)
+![Oneplus2](https://github.com/davidobinna/hyperhire-react-native/assets/69047727/4afa4f36-f6cd-45f7-92f8-36ed471d2dcb)
+![Oneplus3](https://github.com/davidobinna/hyperhire-react-native/assets/69047727/a988c5ee-b8c3-4cd4-b310-8a4bfbf7550b)
+![Oneplus5](https://github.com/davidobinna/hyperhire-react-native/assets/69047727/f927900a-1739-478d-bcc6-7dc5e4f1f4df)
+
 
 In the output, you'll find options to open the app in a
 
